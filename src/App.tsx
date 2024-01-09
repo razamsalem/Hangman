@@ -15,9 +15,9 @@ function App() {
   return (
     <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center">
       <div className="text-3xl text-center">Lose Win</div>
-      {/* <HangmanDrawing />
-      <HangmanWord />
-      <Keyboard /> */}
+      <HangmanDrawing />
+      {/* <HangmanWord /> */}
+      {/* <Keyboard /> */}
     </div>
   )
 }
