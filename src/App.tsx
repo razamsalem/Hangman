@@ -20,7 +20,7 @@ function App() {
     <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center font-mono">
       <div className="text-3xl text-center">Lose Win</div>
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
-      <HangmanWord />
+      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
       <div className="self-stretch">
         <Keyboard />
       </div>
