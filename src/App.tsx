@@ -13,10 +13,10 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
   return (
-    <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center">
+    <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center font-mono">
       <div className="text-3xl text-center">Lose Win</div>
       <HangmanDrawing />
-      {/* <HangmanWord /> */}
+      <HangmanWord />
       {/* <Keyboard /> */}
     </div>
   )
