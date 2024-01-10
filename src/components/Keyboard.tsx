@@ -47,9 +47,12 @@ export function Keyboard({ activeLetters, inactiveLetters, addGuessedLetter }
                 const isInactive = inactiveLetters.includes(key)
                 return (
                     <button
-                        // disabled={true}
-                        className="btn border-primary transition duration-300 text-primary hover:bg-sky-300 focus:bg-light active:bg-sky-600 active:text-white"
+                        className={`btn border-primary text-primary hover:bg-sky-600 hover:text-light focus:bg-light active:bg-sky-600 active:text-white
+                         ${isActive ? 'bg-light text-sky-600' : ''}
+                         ${isInactive ? 'opacity-5' : ''}`
+                        }
                         onClick={() => addGuessedLetter(key)}
+                        disabled={isInactive || isActive}
                         key={key}
                     >
                         {key}

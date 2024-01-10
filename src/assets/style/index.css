@@ -4,7 +4,7 @@
 
 @layer components {
     .btn {
-        @apply w-full p-2 border-[3px] aspect-square bg-none text-[2.5rem] font-bold uppercase cursor-pointer;
+        @apply w-full p-2 border-[3px] aspect-square bg-none text-[2.5rem] font-bold uppercase cursor-pointer transition duration-300;
     }
 }
 
