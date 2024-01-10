@@ -7,14 +7,12 @@ import { HangmanDrawing } from "./components/HangmanDrawing";
 import { HangmanWord } from "./components/HangmanWord";
 
 function App() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
-    return words[Math.floor(Math.random() * words.length)]
-  })
-
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
-  const incorrectLetters = guessedLetters.filter(letter =>
-    !wordToGuess.includes(letter)
-  )
+  const [wordToGuess, setWordToGuess] = useState(() => { return words[Math.floor(Math.random() * words.length)] })
+  const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter))
+
+  const isWinner = wordToGuess.split("").every(letter => guessedLetters.includes(letter))
+  const isLoser = incorrectLetters.length >= 6
 
   useEffect(() => {
     const handler = (ev: KeyboardEvent) => {
@@ -42,9 +40,15 @@ function App() {
 
   return (
     <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center font-mono">
-      <div className="text-3xl text-center text-lighter">Lose Win</div>
+
+      <div className="text-3xl text-center text-lighter">
+        {isWinner && "Winner! - Good job, refresh to play again"}
+        {isLoser && "Nice try! refresh to play again"}
+      </div>
+
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
+
       <div className="self-stretch">
         <Keyboard
           activeLetters={guessedLetters.filter(letter =>
@@ -54,6 +58,7 @@ function App() {
           addGuessedLetter={addGuessedLetter}
         />
       </div>
+
     </div>
   )
 }
