@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import words from "./wordList.json"
 // import './index.css'
 
@@ -31,13 +31,14 @@ function App() {
     return () => {
       document.removeEventListener("keypress", handler)
     }
-  }, [])
+  }, [guessedLetters])
 
-  function addGuessedLetter(letter: string) {
+  const addGuessedLetter = useCallback((letter: string) => {
     if (guessedLetters.includes(letter)) return
 
     setGuessedLetters(currLetters => [...currLetters, letter])
-  }
+  },[guessedLetters])
+
 
   return (
     <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center font-mono">
