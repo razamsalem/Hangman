@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .btn {
+        @apply w-full p-2 border-[3px] aspect-square bg-none text-[2.5rem] font-bold uppercase cursor-pointer;
+    }
+}
+
+
 body {
     background-color: #232323;
 }
