@@ -38,7 +38,7 @@ export function Keyboard() {
             {KEYS.map(key => {
                 return (
                     <button
-                        className="w-full border-[3px] border-black bg-none aspect-square text-[2.5rem] uppercase p-2 font-bold cursor-pointer transition duration-300 hover:bg-sky-300   focus:bg-sky-400 active:bg-sky-600 active:text-white"
+                        className="w-full border-[3px] border-primary bg-none text-primary aspect-square text-[2.5rem] uppercase p-2 font-bold cursor-pointer transition duration-300 hover:bg-sky-300   focus:bg-light active:bg-sky-600 active:text-white"
                         key={key}
                     >
                         {key}
