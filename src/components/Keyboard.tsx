@@ -28,13 +28,14 @@ const KEYS = [
 ]
 
 type KeyboardProps = {
+    isDisabled?: boolean
     activeLetters: string[]
     inactiveLetters: string[]
     addGuessedLetter: (letter: string) => void
 }
 
 
-export function Keyboard({ activeLetters, inactiveLetters, addGuessedLetter }
+export function Keyboard({ isDisabled = false, activeLetters, inactiveLetters, addGuessedLetter }
     : KeyboardProps) {
     return (
         <div style={{
@@ -52,7 +53,7 @@ export function Keyboard({ activeLetters, inactiveLetters, addGuessedLetter }
                          ${isInactive ? 'opacity-5' : ''}`
                         }
                         onClick={() => addGuessedLetter(key)}
-                        disabled={isInactive || isActive}
+                        disabled={isInactive || isActive || isDisabled}
                         key={key}
                     >
                         {key}

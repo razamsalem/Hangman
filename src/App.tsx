@@ -51,6 +51,7 @@ function App() {
 
       <div className="self-stretch">
         <Keyboard
+          isDisabled={isWinner || isLoser}
           activeLetters={guessedLetters.filter(letter =>
             wordToGuess.includes(letter)
           )}
