@@ -11,10 +11,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home isDarkMode={isDarkMode} setDarkMode={setDarkMode} />} />
           <Route path="/play" element={<Hangman isDarkMode={isDarkMode} setDarkMode={setDarkMode} />} />
-          {/* <Route path="/toy" element={<ToyIndex />} /> */}
-          {/* <Route path="/toy/:toyId" element={<ToyDetails />} /> */}
-          {/* <Route path="/toy/edit/:toyId" element={<ToyEdit />} /> */}
-          {/* <Route path="/toy/edit/" element={<ToyEdit />} /> */}
         </Routes>
       </main>
     </div>
