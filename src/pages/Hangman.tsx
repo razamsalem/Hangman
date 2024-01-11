@@ -94,11 +94,12 @@ export function Hangman({ isDarkMode, setDarkMode }: HangmanProps) {
       </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} isDarkMode={isDarkMode} />
-      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} reveal={isLoser} />
+      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} isDarkMode={isDarkMode} reveal={isLoser} />
 
       <div className="self-stretch">
         <Keyboard
           isDisabled={isWinner || isLoser}
+          isDarkMode={isDarkMode}
           activeLetters={guessedLetters.filter(letter =>
             wordToGuess.includes(letter)
           )}
