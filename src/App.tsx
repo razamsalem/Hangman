@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div>
-      <main className='main-layout full'>
+      <main className='font-nunito bg-darker text-primary min-h-screen'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/play" element={<Hangman />} />

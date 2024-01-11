@@ -48,7 +48,7 @@ export function Keyboard({ isDisabled = false, activeLetters, inactiveLetters, a
                 const isInactive = inactiveLetters.includes(key)
                 return (
                     <button
-                        className={`btn border-primary text-primary hover:bg-sky-600 hover:text-light focus:bg-light active:bg-sky-600 active:text-white
+                        className={`key border-primary text-primary hover:bg-sky-600 hover:text-light focus:bg-light active:bg-sky-600 active:text-white
                          ${isActive ? 'bg-light text-sky-600' : ''}
                          ${isInactive ? 'opacity-5' : ''}`
                         }
