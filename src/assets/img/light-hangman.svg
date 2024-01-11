@@ -14,7 +14,7 @@
     <line
       id="base1"
       fill="none"
-      stroke="#19A7CE"
+      stroke="#f6ad55"
       stroke-width="10"
       stroke-miterlimit="10"
       x1="28"
@@ -25,7 +25,7 @@
     <line
       id="base2"
       fill="none"
-      stroke="#19A7CE"
+      stroke="#f6ad55"
       stroke-width="8.6093"
       stroke-miterlimit="10"
       x1="171.5"
@@ -36,7 +36,7 @@
     <line
       id="base3"
       fill="none"
-      stroke="#19A7CE"
+      stroke="#f6ad55"
       stroke-width="8"
       stroke-miterlimit="10"
       x1="70.5"
@@ -47,7 +47,7 @@
     <line
       id="base4"
       fill="none"
-      stroke="#19A7CE"
+      stroke="#f6ad55"
       stroke-width="4.505"
       stroke-miterlimit="10"
       x1="72.797"
@@ -58,7 +58,7 @@
     <line
       id="base4Longer"
       fill="none"
-      stroke="#19A7CE"
+      stroke="#f6ad55"
       stroke-width="4.505"
       stroke-miterlimit="10"
       x1="72.797"
@@ -73,7 +73,7 @@
         <path
           id="happy1_1_"
           fill="#fff"
-          stroke="#19A7CE"
+          stroke="#f6ad55"
           stroke-width="4"
           stroke-miterlimit="10"
           d="M97.201,82.503
@@ -84,7 +84,7 @@
           <ellipse
             transform="matrix(0.9055 -0.4244 0.4244 0.9055 -28.5286 34.7614)"
             fill="#FFFFFF"
-            stroke="#19A7CE"
+            stroke="#f6ad55"
             stroke-width="2.5082"
             stroke-miterlimit="10"
             cx="63.769"
@@ -104,7 +104,7 @@
           <ellipse
             transform="matrix(0.9055 -0.4244 0.4244 0.9055 -26.9988 40.5386)"
             fill="#FFFFFF"
-            stroke="#19A7CE"
+            stroke="#f6ad55"
             stroke-width="3"
             stroke-miterlimit="10"
             cx="77.501"
@@ -133,7 +133,7 @@
       <path
         id="base6"
         fill="none"
-        stroke="#fff"
+        stroke="#f6ad55"
         stroke-width="4"
         stroke-miterlimit="10"
         d="M73.733,120.504
@@ -191,7 +191,7 @@
         id="happy2"
         fill="none"
         stroke="#19A7CE"
-        stroke-width=""
+        stroke-width="4"
         stroke-miterlimit="10"
         d="M81.167,215.667
            		c-4.102,7.518-8.666,38.107,2.333,52.667"

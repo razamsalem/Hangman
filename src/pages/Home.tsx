@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import darkModeHangman from '../assets/img/dark-hangman.svg'
-import { useState } from 'react'
+import lightModeHangman from '../assets/img/light-hangman.svg'
 
 type HomeProps = {
     isDarkMode: boolean
@@ -43,7 +44,7 @@ export function Home({ isDarkMode, setDarkMode }: HomeProps) {
             </div>
 
             <div className='w-max mx-auto'>
-                <img src={darkModeHangman} alt="Hangman image" />
+                <img src={isDarkMode ? darkModeHangman : lightModeHangman} alt="Hangman image" />
             </div>
 
             <div className='flex flex-col items-center space-y-6'>
