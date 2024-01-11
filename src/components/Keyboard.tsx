@@ -27,8 +27,39 @@ const KEYS = [
     "z",
 ]
 
+const HEBREW_KEYS = [
+    "א",
+    "ב",
+    "ג",
+    "ד",
+    "ה",
+    "ו",
+    "ז",
+    "ח",
+    "ט",
+    "י",
+    "כ",
+    "ך",
+    "ל",
+    "מ",
+    "ם",
+    "נ",
+    "ן",
+    "ס",
+    "ע",
+    "פ",
+    "ף",
+    "צ",
+    "ץ",
+    "ק",
+    "ר",
+    "ש",
+    "ת",
+]
+
 type KeyboardProps = {
     isDisabled?: boolean
+    isHebrew: boolean
     isDarkMode: boolean
     activeLetters: string[]
     inactiveLetters: string[]
@@ -36,15 +67,17 @@ type KeyboardProps = {
 }
 
 
-export function Keyboard({ isDisabled = false, isDarkMode, activeLetters, inactiveLetters, addGuessedLetter }
+export function Keyboard({ isDisabled = false, isHebrew, isDarkMode, activeLetters, inactiveLetters, addGuessedLetter }
     : KeyboardProps) {
+    const lang = isHebrew ? HEBREW_KEYS.slice().reverse() : KEYS
+
     return (
         <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
-            gap: ".5rem"
+            gap: ".5rem",
         }}>
-            {KEYS.map(key => {
+            {lang.map(key => {
                 const isActive = activeLetters.includes(key)
                 const isInactive = inactiveLetters.includes(key)
                 return (

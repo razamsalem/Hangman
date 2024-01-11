@@ -2,17 +2,19 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import words from "../wordList.json"
+import hebrewWords from "../hebrewList.json"
 import { Keyboard } from "../components/Keyboard";
 import { HangmanDrawing } from "../components/HangmanDrawing";
 import { HangmanWord } from "../components/HangmanWord";
 import { SettingsModal } from "../components/SettingsModal";
 
 type HangmanProps = {
+  isHebrew: boolean
   isDarkMode: boolean
   setDarkMode: (value: boolean) => void
 }
 
-export function Hangman({ isDarkMode, setDarkMode }: HangmanProps) {
+export function Hangman({ isHebrew, isDarkMode, setDarkMode }: HangmanProps) {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
   const [wordToGuess, setWordToGuess] = useState(getWord)
   const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter))
@@ -23,20 +25,22 @@ export function Hangman({ isDarkMode, setDarkMode }: HangmanProps) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const handler = (ev: KeyboardEvent) => {
-      const key = ev.key
-
-      if (!key.match(/^[a-zA-Z]$/)) return
-
-      ev.preventDefault()
-      addGuessedLetter(key)
-    }
-    document.addEventListener("keypress", handler)
-
+    const keydownHandler = (ev: KeyboardEvent) => {
+      const key = ev.key;
+  
+      if (!key.match(/^[a-zA-Zא-ת]$/)) return;
+  
+      ev.preventDefault();
+      addGuessedLetter(key);
+    };
+  
+    document.addEventListener("keydown", keydownHandler);
+  
     return () => {
-      document.removeEventListener("keypress", handler)
-    }
-  }, [guessedLetters])
+      document.removeEventListener("keydown", keydownHandler);
+    };
+  }, [guessedLetters]);
+  
 
   useEffect(() => {
     const handler = (ev: KeyboardEvent) => {
@@ -56,7 +60,8 @@ export function Hangman({ isDarkMode, setDarkMode }: HangmanProps) {
   }, [])
 
   function getWord() {
-    return words[Math.floor(Math.random() * words.length)]
+    if (isHebrew) return hebrewWords[Math.floor(Math.random() * hebrewWords.length)]
+    else return words[Math.floor(Math.random() * words.length)]
   }
 
   function openModal() {
@@ -94,11 +99,12 @@ export function Hangman({ isDarkMode, setDarkMode }: HangmanProps) {
       </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} isDarkMode={isDarkMode} />
-      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} isDarkMode={isDarkMode} reveal={isLoser} />
+      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} isHebrew={isHebrew} isDarkMode={isDarkMode} reveal={isLoser} />
 
       <div className="self-stretch">
         <Keyboard
           isDisabled={isWinner || isLoser}
+          isHebrew={isHebrew}
           isDarkMode={isDarkMode}
           activeLetters={guessedLetters.filter(letter =>
             wordToGuess.includes(letter)

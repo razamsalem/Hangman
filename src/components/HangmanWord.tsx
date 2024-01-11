@@ -2,15 +2,19 @@ type HangmanWordProps = {
     guessedLetters: string[]
     wordToGuess: string
     isDarkMode: boolean
+    isHebrew: boolean
     reveal?: boolean
 }
 
-export function HangmanWord({ guessedLetters, wordToGuess, isDarkMode, reveal = false }:
+export function HangmanWord({ guessedLetters, wordToGuess, isHebrew, isDarkMode, reveal = false }:
     HangmanWordProps) {
+    const displayWord = isHebrew
+        ? wordToGuess.split('').reverse().join('')
+        : wordToGuess;
 
     return (
         <div className="flex gap-1 text-8xl font-bold uppercase">
-            {wordToGuess.split('').map((letter, idx) => (
+            {displayWord.split('').map((letter, idx) => (
                 <span className={`m-2 border-b-[.1em] ${isDarkMode ? 'border-light' : 'border-secondary-light'}`} key={idx}>
                     <span style={{
                         visibility: guessedLetters.includes(letter.toLowerCase()) || reveal
