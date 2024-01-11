@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import words from "../wordList.json"
+import { useNavigate } from "react-router";
 
+import words from "../wordList.json"
 import { Keyboard } from "../components/Keyboard";
 import { HangmanDrawing } from "../components/HangmanDrawing";
 import { HangmanWord } from "../components/HangmanWord";
@@ -12,6 +13,7 @@ export function Hangman() {
 
   const isWinner = wordToGuess.split("").every(letter => guessedLetters.includes(letter))
   const isLoser = incorrectLetters.length >= 6
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handler = (ev: KeyboardEvent) => {
@@ -50,6 +52,10 @@ export function Hangman() {
     return words[Math.floor(Math.random() * words.length)]
   }
 
+  function navigateHome() {
+    navigate('/')
+  }
+
   const addGuessedLetter = useCallback((letter: string) => {
     if (guessedLetters.includes(letter) || isWinner || isLoser) return
 
@@ -59,6 +65,9 @@ export function Hangman() {
 
   return (
     <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center font-mono">
+
+      <button onClick={navigateHome} className='btn absolute left-5 top-8'><span className="fa-solid fa-arrow-left  mx-1"></span> Go Back</button>
+      <button className='btn absolute left-5 top-24'> <span className="fa-solid fa-gears mx-1"></span> Settings</button>
 
       <div className="text-3xl text-center text-lighter">
         {isWinner && "Winner! - Good job, \"Enter\" to play again"}
