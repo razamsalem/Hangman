@@ -1,14 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
 
-@layer components {
-    .btn {
-        @apply w-full p-2 border-[3px] aspect-square bg-none text-[2.5rem] font-bold uppercase cursor-pointer transition duration-300;
-    }
-}
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer components {
+      .btn {
+          @apply w-full p-2 border-[3px] aspect-square bg-none text-[2.5rem] font-bold uppercase cursor-pointer transition duration-300;
+      }
+  }
 
 
-body {
-    background-color: #232323;
-}
+  body {
+      background-color: #232323;
+      color: #19A7CE;
+  }

@@ -12,6 +12,9 @@ export default {
         "lighter": "#F8EDFF"
       }
     },
+    fontFamily: {
+      nunito: ["Nunito", "sans-serif"]
+    }
   },
   plugins: [],
 }
