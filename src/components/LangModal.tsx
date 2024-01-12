@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from 'react-i18next'
 
 type LangModalProps = {
   isModalOpen: boolean
@@ -9,30 +10,31 @@ type LangModalProps = {
 }
 
 export function LangModal({ isModalOpen, onCloseModal, onToggleLang, isDarkMode, isHebrew }: LangModalProps) {
-    const modalRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const { t } = useTranslation()
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-            onCloseModal();
-          }
-        };
-    
-        if (isModalOpen) {
-          window.addEventListener('mousedown', handleClickOutside)
-        }
-    
-        return () => {
-          window.removeEventListener('mousedown', handleClickOutside)
-        };
-      }, [isModalOpen, onCloseModal])
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onCloseModal();
+      }
+    };
+
+    if (isModalOpen) {
+      window.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside)
+    };
+  }, [isModalOpen, onCloseModal])
 
   return (
     <>
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div ref={modalRef} className="relative bg-white p-6 rounded-lg">
-            <p className="mb-4 text-center">Select Language</p>
+            <p className="mb-4 text-center">{t('modals.selectLang')}</p>
             <button onClick={onToggleLang} className={`${isDarkMode ? 'btn-dark' : 'btn-light'}`}>
               {isHebrew ? 'Switch to English' : 'Switch to Hebrew'}
             </button>

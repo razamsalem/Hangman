@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from 'react-i18next'
+
 
 type SettingsModalProps = {
   isModalOpen: boolean
@@ -8,32 +10,33 @@ type SettingsModalProps = {
 }
 
 export function SettingsModal({ isModalOpen, onCloseModal, onToggleDarkMode, isDarkMode }: SettingsModalProps) {
-    const modalRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const { t } = useTranslation()
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-            onCloseModal();
-          }
-        };
-    
-        if (isModalOpen) {
-          window.addEventListener('mousedown', handleClickOutside)
-        }
-    
-        return () => {
-          window.removeEventListener('mousedown', handleClickOutside)
-        };
-      }, [isModalOpen, onCloseModal])
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onCloseModal();
+      }
+    };
+
+    if (isModalOpen) {
+      window.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside)
+    };
+  }, [isModalOpen, onCloseModal])
 
   return (
     <>
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div ref={modalRef} className="relative bg-white p-6 rounded-lg">
-            <p className="mb-4 text-center">Toggle Dark Mode</p>
+            <p className="mb-4 text-center">{t('modals.selectMode')}</p>
             <button onClick={onToggleDarkMode} className={`${isDarkMode ? 'btn-light' : 'btn-dark'}`}>
-              {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              {isDarkMode ? t('modals.toggleLightMode') : t('modals.toggleDarkMode')}
             </button>
             <button onClick={onCloseModal} className="absolute top-[-8px] right-[-8px]">
               <span className='w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center'>

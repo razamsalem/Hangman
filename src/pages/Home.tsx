@@ -67,9 +67,9 @@ export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps
             </div>
 
             <div className='flex flex-col items-center space-y-6'>
-                <button onClick={navigateGame} className={`${isDarkMode ? 'btn-dark' : 'btn-light'} mt-7 mb-0`}>Play</button>
-                <button onClick={openLangModal} className={`${isDarkMode ? 'btn-dark' : 'btn-light'}`}>Languages</button>
-                <button onClick={openSettings} className={`${isDarkMode ? 'btn-dark' : 'btn-light'}`}>Settings</button>
+                <button onClick={navigateGame} className={`${isDarkMode ? 'btn-dark' : 'btn-light'} mt-7 mb-0`}>{t('buttons.play')}</button>
+                <button onClick={openLangModal} className={`${isDarkMode ? 'btn-dark' : 'btn-light'}`}>{t('buttons.languages')}</button>
+                <button onClick={openSettings} className={`${isDarkMode ? 'btn-dark' : 'btn-light'}`}>{t('buttons.settings')}</button>
             </div>
 
             {isLangOpen && (
@@ -92,7 +92,7 @@ export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps
             )}
 
             <div className={`mt-36 border-t-2 ${isDarkMode ? 'border-primary' : 'border-secondary'} `}>
-                <h4 className='flex justify-center py-5'>©️ 2023 Made By Raz Amsalem {isDarkMode ? '💙' : '🧡'} </h4>
+                <h4 className='flex justify-center py-5'>©️ 2023 {t('footer.credit')} {isDarkMode ? '💙' : '🧡'} </h4>
             </div>
 
         </section>
