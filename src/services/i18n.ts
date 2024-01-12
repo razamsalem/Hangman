@@ -33,6 +33,11 @@ i18n
                         toggleLightMode: 'Switch to Light Mode',
                         toggleDarkMode: 'Switch to Dark Mode',
                     },
+                    game: {
+                            back: 'Go Back',
+                            win: 'Winner! - Good job, \"Enter\" to play again',
+                            lose: 'Nice try... \"Enter\" to play again',
+                    },
                     footer: {
                         credit: 'Made by Raz Amsalem'
                     }
@@ -54,6 +59,11 @@ i18n
                         selectMode: 'ערכות נושא',
                         toggleLightMode: 'שנה למצב יום',
                         toggleDarkMode: 'שנה למצב לילה',
+                    },
+                    game: {
+                            back: 'חזור',
+                            win: 'כל הכבוד ניצחת! לחץ "אנטר" כדי להמשיך',
+                            lose: 'לא נורא...לחץ "אנטר" כדי להמשיך',
                     },
                     footer: {
                         credit: 'נוצר על ידי רז אמסלם'

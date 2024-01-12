@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 import words from "../services/wordList.json"
 import hebrewWords from "../services/hebrewList.json"
@@ -23,6 +24,7 @@ export function Hangman({ isHebrew, isDarkMode, setDarkMode }: HangmanProps) {
   const isWinner = wordToGuess.split("").every(letter => guessedLetters.includes(letter))
   const isLoser = incorrectLetters.length >= 6
   const navigate = useNavigate()
+  const {t} = useTranslation();
 
   useEffect(() => {
     const keydownHandler = (ev: KeyboardEvent) => {
@@ -90,12 +92,12 @@ export function Hangman({ isHebrew, isDarkMode, setDarkMode }: HangmanProps) {
   return (
     <div className="max-w-screen-md	mx-auto flex flex-col gap-8 items-center font-mono">
 
-      <button onClick={navigateHome} className={`btn absolute left-5 top-8 ${isDarkMode ? 'btn-dark' : 'btn-light'}`}><span className="fa-solid fa-arrow-left  mx-1"></span> Go Back</button>
-      <button onClick={openModal} className={`btn absolute left-5 top-24 ${isDarkMode ? 'btn-dark' : 'btn-light'}`}> <span className="fa-solid fa-gears mx-1"></span> Settings</button>
+      <button onClick={navigateHome} className={`btn absolute left-5 top-8 ${isDarkMode ? 'btn-dark' : 'btn-light'}`}><span className="fa-solid fa-arrow-left  mx-1"></span> {t('game.back')}</button>
+      <button onClick={openModal} className={`btn absolute left-5 top-24 ${isDarkMode ? 'btn-dark' : 'btn-light'}`}> <span className="fa-solid fa-gears mx-1"></span> {t('buttons.settings')}</button>
 
       <div className={`text-3xl text-center ${isDarkMode ? 'text-primary' : 'text-pink-500'} `}>
-        {isWinner && "Winner! - Good job, \"Enter\" to play again"}
-        {isLoser && "Nice try! \"Enter\" to play again"}
+        {isWinner && t('game.win')}
+        {isLoser && t('game.lose')}
       </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} isDarkMode={isDarkMode} />
