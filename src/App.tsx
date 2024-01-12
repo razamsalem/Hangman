@@ -6,26 +6,26 @@ import { Hangman } from './pages/Hangman'
 
 function App() {
   const [isDarkMode, setDarkMode] = useState(true)
-  const [isHebrew, setHebrew] = useState(false)
+  const [lang, setLang] = useState('en')
   const { i18n } = useTranslation()
 
   useEffect(() => {
-    const lang = navigator.language
-    i18n.changeLanguage(lang)
+    const userLang = navigator.language
+    i18n.changeLanguage(userLang)
 
-    if (isHebrew) {
+    if (lang === 'he') {
       i18n.changeLanguage('he')
     } else {
       i18n.changeLanguage('en')
     }
-  }, [isHebrew])
+  }, [lang])
 
   return (
     <div>
       <main className={`font-nunito ${isDarkMode ? 'bg-darker text-primary' : 'bg-slate-300 text-orange-500'} min-h-screen`}>
         <Routes>
-          <Route path="/" element={<Home isDarkMode={isDarkMode} isHebrew={isHebrew} setDarkMode={setDarkMode} setHebrew={setHebrew} />} />
-          <Route path="/play" element={<Hangman isHebrew={isHebrew} isDarkMode={isDarkMode} setDarkMode={setDarkMode} />} />
+          <Route path="/" element={<Home isDarkMode={isDarkMode} lang={lang} setDarkMode={setDarkMode} setLang={setLang} />} />
+          <Route path="/play" element={<Hangman lang={lang} isDarkMode={isDarkMode} setDarkMode={setDarkMode} />} />
         </Routes>
       </main>
     </div>

@@ -8,12 +8,11 @@ import darkModeHangman from '../assets/img/dark-hangman.svg'
 
 type HomeProps = {
     isDarkMode: boolean
-    isHebrew: boolean
     setDarkMode: (value: boolean) => void
-    setHebrew: (value: boolean) => void
+    setLang: (value: string) => void
 }
 
-export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps) {
+export function Home({ isDarkMode, setDarkMode, setLang }: HomeProps) {
     const [isSettingsOpen, setSettingsOpen] = useState(false)
     const [isLangOpen, setLangOpen] = useState(false)
     const { t } = useTranslation()
@@ -47,8 +46,12 @@ export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps
         setDarkMode(!isDarkMode)
     }
 
-    function onToggleLang() {
-        setHebrew(!isHebrew)
+    function onHebrewLang() {
+        setLang('he')
+    }
+
+    function onEnglishLang() {
+        setLang('en')
     }
 
     return (
@@ -76,9 +79,9 @@ export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps
                 <LangModal
                     isModalOpen={isLangOpen}
                     onCloseModal={closeLangModal}
-                    onToggleLang={onToggleLang}
+                    onHebrewLang={onHebrewLang}
+                    onEnglishLang={onEnglishLang}
                     isDarkMode={isDarkMode}
-                    isHebrew={isHebrew}
                 />
             )}
 

@@ -59,7 +59,7 @@ const HEBREW_KEYS = [
 
 type KeyboardProps = {
     isDisabled?: boolean
-    isHebrew: boolean
+    lang: string
     isDarkMode: boolean
     activeLetters: string[]
     inactiveLetters: string[]
@@ -67,9 +67,9 @@ type KeyboardProps = {
 }
 
 
-export function Keyboard({ isDisabled = false, isHebrew, isDarkMode, activeLetters, inactiveLetters, addGuessedLetter }
+export function Keyboard({ isDisabled = false, lang, isDarkMode, activeLetters, inactiveLetters, addGuessedLetter }
     : KeyboardProps) {
-    const lang = isHebrew ? HEBREW_KEYS.slice().reverse() : KEYS
+    const keyLang = lang === 'he' ? HEBREW_KEYS.slice().reverse() : KEYS
 
     return (
         <div style={{
@@ -77,7 +77,7 @@ export function Keyboard({ isDisabled = false, isHebrew, isDarkMode, activeLette
             gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
             gap: ".5rem",
         }}>
-            {lang.map(key => {
+            {keyLang.map(key => {
                 const isActive = activeLetters.includes(key)
                 const isInactive = inactiveLetters.includes(key)
                 return (

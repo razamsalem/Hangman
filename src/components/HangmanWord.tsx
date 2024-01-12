@@ -2,13 +2,13 @@ type HangmanWordProps = {
     guessedLetters: string[]
     wordToGuess: string
     isDarkMode: boolean
-    isHebrew: boolean
+    lang: string
     reveal?: boolean
 }
 
-export function HangmanWord({ guessedLetters, wordToGuess, isHebrew, isDarkMode, reveal = false }:
+export function HangmanWord({ guessedLetters, wordToGuess, lang, isDarkMode, reveal = false }:
     HangmanWordProps) {
-    const displayWord = isHebrew
+    const displayWord = lang === 'he'
         ? wordToGuess.split('').reverse().join('')
         : wordToGuess;
 

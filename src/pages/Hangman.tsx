@@ -10,12 +10,12 @@ import { HangmanWord } from "../components/HangmanWord";
 import { SettingsModal } from "../components/SettingsModal";
 
 type HangmanProps = {
-  isHebrew: boolean
+  lang: string
   isDarkMode: boolean
   setDarkMode: (value: boolean) => void
 }
 
-export function Hangman({ isHebrew, isDarkMode, setDarkMode }: HangmanProps) {
+export function Hangman({ lang, isDarkMode, setDarkMode }: HangmanProps) {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
   const [wordToGuess, setWordToGuess] = useState(getWord)
   const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter))
@@ -62,7 +62,7 @@ export function Hangman({ isHebrew, isDarkMode, setDarkMode }: HangmanProps) {
   }, [])
 
   function getWord() {
-    if (isHebrew) return hebrewWords[Math.floor(Math.random() * hebrewWords.length)]
+    if (lang === 'he') return hebrewWords[Math.floor(Math.random() * hebrewWords.length)]
     else return words[Math.floor(Math.random() * words.length)]
   }
 
@@ -101,12 +101,12 @@ export function Hangman({ isHebrew, isDarkMode, setDarkMode }: HangmanProps) {
       </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} isDarkMode={isDarkMode} />
-      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} isHebrew={isHebrew} isDarkMode={isDarkMode} reveal={isLoser} />
+      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} lang={lang} isDarkMode={isDarkMode} reveal={isLoser} />
 
       <div className="self-stretch">
         <Keyboard
           isDisabled={isWinner || isLoser}
-          isHebrew={isHebrew}
+          lang={lang}
           isDarkMode={isDarkMode}
           activeLetters={guessedLetters.filter(letter =>
             wordToGuess.includes(letter)
