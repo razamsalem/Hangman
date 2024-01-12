@@ -24,7 +24,7 @@ function App() {
     <div>
       <main className={`font-nunito ${isDarkMode ? 'bg-darker text-primary' : 'bg-slate-300 text-orange-500'} min-h-screen`}>
         <Routes>
-          <Route path="/" element={<Home isDarkMode={isDarkMode} lang={lang} setDarkMode={setDarkMode} setLang={setLang} />} />
+          <Route path="/" element={<Home isDarkMode={isDarkMode} setDarkMode={setDarkMode} setLang={setLang} />} />
           <Route path="/play" element={<Hangman lang={lang} isDarkMode={isDarkMode} setDarkMode={setDarkMode} />} />
         </Routes>
       </main>

@@ -5,6 +5,7 @@ import { SettingsModal } from '../components/SettingsModal'
 import { LangModal } from '../components/LangModal'
 import lightModeHangman from '../assets/img/light-hangman.svg'
 import darkModeHangman from '../assets/img/dark-hangman.svg'
+import keySound from '../assets/sound/keySound.mp3'
 
 type HomeProps = {
     isDarkMode: boolean
@@ -24,34 +25,47 @@ export function Home({ isDarkMode, setDarkMode, setLang }: HomeProps) {
 
     function navigateGame() {
         navigate('/play')
+        playKeySound()
     }
 
     function openSettings() {
         setSettingsOpen(true)
+        playKeySound()
     }
 
     function openLangModal() {
         setLangOpen(true)
+        playKeySound()
     }
 
     function closeSettings() {
         setSettingsOpen(false)
+        playKeySound()
     }
 
     function closeLangModal() {
         setLangOpen(false)
+        playKeySound()
     }
 
     function toggleDarkMode() {
         setDarkMode(!isDarkMode)
+        playKeySound()
     }
 
     function onHebrewLang() {
         setLang('he')
+        playKeySound()
     }
 
     function onEnglishLang() {
         setLang('en')
+        playKeySound()
+    }
+
+    function playKeySound() {
+        const audio = new Audio(keySound)
+        audio.play()
     }
 
     return (

@@ -1,13 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { SettingsModal } from "../components/SettingsModal";
+import { HangmanDrawing } from "../components/HangmanDrawing";
+import { HangmanWord } from "../components/HangmanWord";
+import { Keyboard } from "../components/Keyboard";
 
 import words from "../services/wordList.json"
 import hebrewWords from "../services/hebrewList.json"
-import { Keyboard } from "../components/Keyboard";
-import { HangmanDrawing } from "../components/HangmanDrawing";
-import { HangmanWord } from "../components/HangmanWord";
-import { SettingsModal } from "../components/SettingsModal";
+import winSound from '../assets/sound/win.mp3'
+import loseSound from '../assets/sound/lose.mp3'
+import dingSound from '../assets/sound/ding.mp3'
+import keySound from '../assets/sound/keySound.mp3'
+import gameKeySound from '../assets/sound/gameKey.mp3'
+
 
 type HangmanProps = {
   lang: string
@@ -24,25 +30,26 @@ export function Hangman({ lang, isDarkMode, setDarkMode }: HangmanProps) {
   const isWinner = wordToGuess.split("").every(letter => guessedLetters.includes(letter))
   const isLoser = incorrectLetters.length >= 6
   const navigate = useNavigate()
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const keydownHandler = (ev: KeyboardEvent) => {
       const key = ev.key;
-  
+
       if (!key.match(/^[a-zA-Zא-ת]$/)) return;
-  
-      ev.preventDefault();
-      addGuessedLetter(key);
-    };
-  
-    document.addEventListener("keydown", keydownHandler);
-  
+
+      ev.preventDefault()
+      addGuessedLetter(key)
+      playKeySound()
+    }
+
+    document.addEventListener("keydown", keydownHandler)
+
     return () => {
-      document.removeEventListener("keydown", keydownHandler);
-    };
-  }, [guessedLetters]);
-  
+      document.removeEventListener("keydown", keydownHandler)
+    }
+  }, [guessedLetters])
+
 
   useEffect(() => {
     const handler = (ev: KeyboardEvent) => {
@@ -61,13 +68,50 @@ export function Hangman({ lang, isDarkMode, setDarkMode }: HangmanProps) {
     }
   }, [])
 
+  useEffect(() => {
+    if (isWinner) {
+      playWinSound()
+    }
+
+    if (isLoser) {
+      playLoseSound()
+    }
+
+  }, [isWinner, isLoser])
+
   function getWord() {
     if (lang === 'he') return hebrewWords[Math.floor(Math.random() * hebrewWords.length)]
     else return words[Math.floor(Math.random() * words.length)]
   }
 
+  function playWinSound() {
+    const audio = new Audio(winSound)
+    audio.play()
+  }
+
+  function playLoseSound() {
+    const audio = new Audio(loseSound)
+    audio.play()
+  }
+
+  function playBtnSound() {
+    const audio = new Audio(keySound)
+    audio.play()
+  }
+
+  function playKeySound() {
+    const audio = new Audio(gameKeySound)
+    audio.play()
+  }
+
+  function playDingSound() {
+    const audio = new Audio(dingSound)
+    audio.play()
+  }
+
   function openModal() {
     setModalOpen(true)
+    playBtnSound()
   }
 
   function closeModal() {
@@ -80,13 +124,18 @@ export function Hangman({ lang, isDarkMode, setDarkMode }: HangmanProps) {
 
   function navigateHome() {
     navigate('/')
+    playBtnSound()
   }
 
   const addGuessedLetter = useCallback((letter: string) => {
     if (guessedLetters.includes(letter) || isWinner || isLoser) return
 
     setGuessedLetters(currLetters => [...currLetters, letter])
-  }, [guessedLetters, isWinner, isLoser])
+
+    if (wordToGuess.includes(letter)) {
+      playDingSound()
+    }
+  }, [guessedLetters, isWinner, isLoser, wordToGuess])
 
 
   return (
