@@ -1,11 +1,24 @@
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Routes, Route } from 'react-router'
 import { Home } from './pages/Home'
 import { Hangman } from './pages/Hangman'
-import { useState } from 'react'
 
 function App() {
   const [isDarkMode, setDarkMode] = useState(true)
   const [isHebrew, setHebrew] = useState(false)
+  const { i18n } = useTranslation()
+
+  useEffect(() => {
+    const lang = navigator.language
+    i18n.changeLanguage(lang)
+
+    if (isHebrew) {
+      i18n.changeLanguage('he')
+    } else {
+      i18n.changeLanguage('en')
+    }
+  }, [isHebrew])
 
   return (
     <div>

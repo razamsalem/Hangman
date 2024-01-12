@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import darkModeHangman from '../assets/img/dark-hangman.svg'
-import lightModeHangman from '../assets/img/light-hangman.svg'
+import { useTranslation } from 'react-i18next'
 import { SettingsModal } from '../components/SettingsModal'
 import { LangModal } from '../components/LangModal'
+import lightModeHangman from '../assets/img/light-hangman.svg'
+import darkModeHangman from '../assets/img/dark-hangman.svg'
 
 type HomeProps = {
     isDarkMode: boolean
@@ -15,6 +16,7 @@ type HomeProps = {
 export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps) {
     const [isSettingsOpen, setSettingsOpen] = useState(false)
     const [isLangOpen, setLangOpen] = useState(false)
+    const { t } = useTranslation()
 
     const navigate = useNavigate()
     const gradientColors = isDarkMode
@@ -53,10 +55,10 @@ export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps
         <section>
             <div className="text-center text-4xl font-regular py-">
                 <h1 className="pt-14">
-                    <span className={`bg-gradient-to-r ${gradientColors} text-transparent bg-clip-text`}>Hangman</span>
+                    <span className={`bg-gradient-to-r ${gradientColors} text-transparent bg-clip-text`}>{t('heading.header')}</span>
                 </h1>
                 <p className="py-4 font-thin">
-                    <span className={`bg-gradient-to-r ${gradientColors} text-transparent bg-clip-text`}>The classic word game</span>
+                    <span className={`bg-gradient-to-r ${gradientColors} text-transparent bg-clip-text`}>{t('heading.subtitle')}</span>
                 </p>
             </div>
 

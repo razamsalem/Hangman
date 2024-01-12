@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import words from "../wordList.json"
-import hebrewWords from "../hebrewList.json"
+import words from "../services/wordList.json"
+import hebrewWords from "../services/hebrewList.json"
 import { Keyboard } from "../components/Keyboard";
 import { HangmanDrawing } from "../components/HangmanDrawing";
 import { HangmanWord } from "../components/HangmanWord";
