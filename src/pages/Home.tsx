@@ -89,6 +89,10 @@ export function Home({ isDarkMode, isHebrew, setDarkMode, setHebrew }: HomeProps
                 />
             )}
 
+            <div className={`mt-36 border-t-2 ${isDarkMode ? 'border-primary' : 'border-secondary'} `}>
+                <h4 className='flex justify-center py-5'>©️ 2023 Made By Raz Amsalem {isDarkMode ? '💙' : '🧡'} </h4>
+            </div>
+
         </section>
     )
 }

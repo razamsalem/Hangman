@@ -33,7 +33,7 @@ export function LangModal({ isModalOpen, onCloseModal, onToggleLang, isDarkMode,
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div ref={modalRef} className="relative bg-white p-6 rounded-lg">
             <p className="mb-4 text-center">Select Language</p>
-            <button onClick={onToggleLang} className={`${isDarkMode ? 'btn-light' : 'btn-dark'}`}>
+            <button onClick={onToggleLang} className={`${isDarkMode ? 'btn-dark' : 'btn-light'}`}>
               {isHebrew ? 'Switch to English' : 'Switch to Hebrew'}
             </button>
             <button onClick={onCloseModal} className="absolute top-[-8px] right-[-8px]">

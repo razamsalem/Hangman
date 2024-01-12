@@ -190,7 +190,7 @@
       <path
         id="happy2"
         fill="none"
-        stroke="#19A7CE"
+        stroke="rgb(236 72 153)"
         stroke-width="4"
         stroke-miterlimit="10"
         d="M81.167,215.667
@@ -279,7 +279,7 @@
         <path
           id="happy1"
           fill="#fff"
-          stroke="#19A7CE"
+          stroke="rgb(236 72 153)"
           stroke-width="4"
           stroke-miterlimit="10"
           d="M117.314,188.834
@@ -289,7 +289,7 @@
         <g id="eye1">
           <ellipse
             fill="#FFFFFF"
-            stroke="#19A7CE"
+            stroke="rgb(236 72 153)"
             stroke-width="2.5082"
             stroke-miterlimit="10"
             cx="87.501"
@@ -302,7 +302,7 @@
         <g id="eye2">
           <ellipse
             fill="#FFFFFF"
-            stroke="#19A7CE"
+            stroke="rgb(236 72 153)"
             stroke-width="3"
             stroke-miterlimit="10"
             cx="100.167"
